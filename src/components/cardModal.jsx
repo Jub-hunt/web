@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 
 const CardModal = ({ isOpen, setOpen, data }) => {
   const modalRef = useRef();
-  const { ref: titleRef, inView } = useInView({ threshold: 0 });
+  const { ref: titleRef } = useInView({ threshold: 0 });
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -60,8 +60,9 @@ const CardModal = ({ isOpen, setOpen, data }) => {
         </h2>
         <h2 className="text-2xl font-bold flex flex-col">{data.salary}</h2>
         <div className="flex flex-wrap">
-          {data.location[0].split(",").map((loc) => (
+          {data.location[0].split(",").map((loc, index) => (
             <Link
+              key={index}
               href={`https://www.google.com/maps?q=${loc}`}
               target="_blank"
               className="bg-[#023259] rounded p-1 px-2 hover:bg-[#02325951] m-1"

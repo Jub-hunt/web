@@ -20,6 +20,7 @@ const JobCard = ({ data, setOpen, setSelectedJob }) => {
             width={20}
             height={20}
             className="rounded-full"
+            alt="logo"
           />
           <p className="text-sm">1 Day ago</p>
         </div>
@@ -38,8 +39,9 @@ const JobCard = ({ data, setOpen, setSelectedJob }) => {
               {data.location[0]
                 .split(",")
                 .slice(0, 2)
-                .map((loc) => (
+                .map((loc,index) => (
                   <Link
+                  key={index}
                     href={`https://www.google.com/maps?q=${loc}`}
                     target="_blank"
                     className="bg-[#023259] rounded p-1 px-2 hover:bg-[#02325951]"
