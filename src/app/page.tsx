@@ -121,7 +121,7 @@ export default function Home() {
             className="me-2"
           />
         </div>
-        <Link className="font-semibold" href={"https://github.com/Jub-hunt/web"} target="_blank">
+        <Link className="font-semibold bg-white text-black flex items-center p-2 rounded-lg hover:bg-transparent hover:text-white hover:border-" href={"https://github.com/Jub-hunt/web"} target="_blank">
           <GithubIcon size={15} className="me-2"/>
           Contribute to Github
         </Link>
@@ -136,7 +136,7 @@ export default function Home() {
           onKeyPress={handleSearchKeyPress}
           className="w-full p-4 px-5 font-bold rounded-lg border-2 border-[#023259] bg-[#011627] focus:border-[#012542] outline-none mb-5"
         />
-        <div className="flex items-center gap-2 border-2 border-[#023259] bg-[#011627] cursor-pointer absolute top-2 right-2 p-2 rounded-lg hover:bg-[#012542]" onClick={()=>{
+        <div className="flex items-center gap-2 border-2 border-[#023259] bg-[#011627] cursor-pointer absolute top-2 right-2 p-2 rounded-lg  hover:border-[#023259] " onClick={()=>{
           setPage(0);
           setJobs([]); 
           setLastJobId(0); 
