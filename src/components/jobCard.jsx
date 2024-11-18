@@ -13,7 +13,7 @@ const JobCard = ({ data, setOpen, setSelectedJob }) => {
     >
       <div className="flex flex-col">
         <div className="flex items-end justify-between mb-2">
-          <Image
+          {/* <Image
             src={
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbMtTs8q1WuRfxeiu4qKn0qB4dBckQpbarug&s"
             }
@@ -21,41 +21,46 @@ const JobCard = ({ data, setOpen, setSelectedJob }) => {
             height={20}
             className="rounded-full"
             alt="logo"
-          />
-          <p className="text-sm">1 Day ago</p>
+          /> */}
+          <p className="text-sm">{data.date} Ago</p>
         </div>
         <div>
           <h1 className="font-bold text-2xl">{data.title}</h1>
-          <p>Facebook Careers</p>
+          <p>{data.company}</p>
         </div>
       </div>
       <div className="flex justify-between flex-wrap mb-2">
-        <div className="flex gap-2 items-center mt-2">
-          {data.location[0].includes("Remote") ||
-          data.location[0].includes("anywhere") ? (
-            <span className="bg-[#023259] rounded p-1 px-2">📍Remote</span>
-          ) : (
-            <>
-              {data.location[0]
-                .split(",")
-                .slice(0, 2)
-                .map((loc,index) => (
-                  <Link
-                  key={index}
-                    href={`https://www.google.com/maps?q=${loc}`}
-                    target="_blank"
-                    className="bg-[#023259] rounded p-1 px-2 hover:bg-[#02325951]"
-                  >
-                    {loc}
-                  </Link>
-                ))}
-              <span className="font-bold">
-                {data.location[0].split(",").length > 2 &&
-                  `+${data.location[0].split(",").length - 3}`}
-              </span>
-            </>
-          )}
+        <div className="flex justify-between flex-wrap mb-2">
+          <div className="flex gap-2 items-center mt-2">
+            {data.location &&
+              (data.location.includes("Remote") ||
+              data.location.includes("anywhere") ? (
+                <span className="bg-[#023259] rounded p-1 px-2">📍Remote</span>
+              ) : (
+                <>
+                  {data.location
+                    .split(",")
+                    .slice(0, 2)
+                    .map((loc, index) => (
+                      <Link
+                        key={index}
+                        href={`https://www.google.com/maps?q=${loc}`}
+                        target="_blank"
+                        className="bg-[#023259] rounded p-1 px-2 hover:bg-[#02325951]"
+                      >
+                        {loc}
+                      </Link>
+                    ))}
+                  {data.location && data.location.split(",").length > 2 && (
+                    <span className="font-bold">
+                      +{data.location.split(",").length - 2}
+                    </span>
+                  )}
+                </>
+              ))}
+          </div>
         </div>
+
         <div>
           <p className="font-bold ">{data?.salary ? data.salary[0] : ""}</p>
         </div>
@@ -75,11 +80,11 @@ const JobCard = ({ data, setOpen, setSelectedJob }) => {
           </Link>
         </div>
       </div>
-      <div className="flex gap-2 my-2">
+      {/* <div className="flex gap-2 my-2">
         <span className="bg-[#023259] rounded p-1 px-2">Figma</span>
         <span className="bg-[#023259] rounded p-1 px-2">Adobe XD</span>
         <span className="bg-[#023259] rounded p-1 px-2">WireFraming</span>
-      </div>
+      </div> */}
     </div>
   );
 };

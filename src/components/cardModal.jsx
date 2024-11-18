@@ -49,29 +49,35 @@ const CardModal = ({ isOpen, setOpen, data }) => {
             <X />
           </button>
         </div>
-        <h2 ref={titleRef} className="text-2xl font-bold mb-4 flex flex-col">
+        <h2
+          ref={titleRef}
+          className="text-2xl font-bold mb-4 flex flex-col max-w-[70%]"
+        >
           <span>
-            {data.title}
+            <span>{data.title}</span>
             <span className="rounded-full text-lg ms-2 border-2 border-[#023259] cursor-pointer hover:bg-[#023259] px-3 py-1">
-              1 Day Ago
+              {data.date}
             </span>
           </span>
-          <span className="text-sm font-thin">Facebook Carrers</span>
+          <span className="text-sm font-thin">{data.company}</span>
         </h2>
-        <h2 className="text-2xl font-bold flex flex-col">{data.salary}</h2>
+        <h2 className="text-2xl font-bold flex flex-col">
+          {data.salary && data.salary.split(",")}
+        </h2>
         <div className="flex flex-wrap">
-          {data.location[0].split(",").map((loc, index) => (
-            <Link
-              key={index}
-              href={`https://www.google.com/maps?q=${loc}`}
-              target="_blank"
-              className="bg-[#023259] rounded p-1 px-2 hover:bg-[#02325951] m-1"
-            >
-              {loc.includes("Remote") || loc.includes("anywhere")
-                ? "📍Remote"
-                : loc}
-            </Link>
-          ))}
+          {data.location &&
+            data.location.split(",").map((loc, index) => (
+              <Link
+                key={index}
+                href={`https://www.google.com/maps?q=${loc}`}
+                target="_blank"
+                className="bg-[#023259] rounded p-1 px-2 hover:bg-[#02325951] m-1"
+              >
+                {loc.includes("Remote") || loc.includes("anywhere")
+                  ? "📍Remote"
+                  : loc}
+              </Link>
+            ))}
         </div>
         <div>
           <div className="max-w-4xl mx-auto p-6"></div>
