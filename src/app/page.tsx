@@ -4,7 +4,8 @@ import JobCard from "@/components/jobCard";
 import CardModal from "@/components/cardModal";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { CornerDownLeft } from "lucide-react";
+import { CornerDownLeft, GithubIcon } from "lucide-react";
+import Link from "next/link";
 
 // Define the type for a job
 interface Job {
@@ -120,18 +121,10 @@ export default function Home() {
             className="me-2"
           />
         </div>
-        <Button className="font-semibold">
-          <Image
-            src={
-              "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/2048px-Google_Chrome_icon_%28February_2022%29.svg.png"
-            }
-            height={20}
-            width={20}
-            alt="logo"
-            className="me-2"
-          />
-          Add Extension
-        </Button>
+        <Link className="font-semibold" href={"https://github.com/Jub-hunt/web"} target="_blank">
+          <GithubIcon size={15} className="me-2"/>
+          Contribute to Github
+        </Link>
       </div>
       <div className="flex flex-col items-center mt-12"></div>
       <div className="relative">
